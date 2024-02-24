@@ -1,0 +1,317 @@
+﻿@section PageStyles {
+    <link href="~/assets/static/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/assets/static/css/pretty-checkbox.min.css" rel="stylesheet" />
+    <link href="~/assets/static/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/static/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/static/plugins/bootstrap-sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/assets/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/assets/static/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" />
+
+}
+<!-- begin page-header -->
+<h1 class="page-header"><i class="fa-regular fa-book"></i> Client Management <small> Client Records </small></h1>
+<!-- end page-header -->
+<div class="panel panel-inverse">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+            <a href="@Url.Action("Client", "Client")" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fas fa-undo"></i></a>
+            <a href="@Url.Action("Index", "Dashboard")" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">Tasks Record</h4>
+    </div>
+    <div class="panel-body">
+        <p></p>
+        @* <div class="form-horizontal">*@
+        <div class="row">
+            <a id="editabledatatable_new" class="btn btn-sm btn-success" data-toggle="modal" data-target="#capture-clients">
+                <i class="fa fa-plus"></i> Add New Task
+            </a>
+            <br />
+            <br />
+        </div>
+        <div class="row">
+            <table id="editabledatatable" class="table table-striped table-hover table-bordered table-condensed">
+                <thead>
+                    <tr role="row">
+
+                        <th style="width:auto">First Name</th>
+                        <th style="width:auto">Last Name</th>
+                        <th style="width:auto">Phone Number</th>
+                        <th style="width:auto">Email</th>
+                        <th style="width:auto">Sex</th>
+                        <th style="width:auto">Nationality</th>
+                        <th style="width:auto"></th>
+                        <th style="width:auto"></th>
+                        <th style="width:auto"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="row">
+            <div class="modal fade" id="capture-clients" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
+                            <h4 class="modal-title">Client</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-inverse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <input id="applicantrecordid" type="hidden" name="applicantrecordid" />
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="first_name">First Name</label>
+                                                <input id="first_name" type="text" name="first_name" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="first_name"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="last_name">Last Name</label>
+                                                <input id="last_name" type="text" name="last_name" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="last_name"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="phone_number">Phone Number</label>
+                                                <input type="text" id="phone_number" name="phone_number" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="phone_number"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="email"> Email</label>
+                                                <input id="email" type="text" name="email" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="email"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_number">ID NO / Passport NO</label>
+                                                <input id="id_number" type="text" name="id_number" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="id_number"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="sex">SEX</label>
+                                                <select id="sex" name="sex" class="form-control">
+                                                    <option value=>Choose Sex</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="occupation">Occupation</label>
+                                                <input id="occupation" type="text" name="occupation" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="occupation"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="nationality">Nationality</label>
+                                                <input id="nationality" type="text" name="nationality" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="nationality"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="physical_address">Physical Address</label>
+                                                <input id="physical_address" type="text" name="physical_address" class="form-control" data-parsley-group="wizard-step-1" />
+                                                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="physical_address"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="next_of_kin_name">Next Of Kin Name</label>
+                                                    <input id="next_of_kin_name" type="text" name="next_of_kin_name" class="form-control" data-parsley-group="wizard-step-1" />
+                                                    <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="next_of_kin_name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="next_of_kin_phone_number">Next Of Kin Number</label>
+                                                    <input id="next_of_kin_phone_number" type="text" name="next_of_kin_phone_number" class="form-control" data-parsley-group="wizard-step-1" />
+                                                    <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="next_of_kin_phone_number"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="date_of_birth">Date Of Birth</label>
+                                                <input id="date_of_birth" type="text" name="date_of_birth" class="form-control" placeholder="Date Of Birth" data-date-format="yyyy-mm-dd" style="width: 100%" data-parsley-group="wizard-step-1" />
+                                                    <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="date_of_birth"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <label class="form-control-label" for="remarks">Remarks</label>
+                                                <textarea id="remarks" rows="3" name="remarks" placeholder="Enter Remarks" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-white btn-sm" id="cancel" data-dismiss="modal"><i class="fa fa-times-circle"></i>&nbsp;Cancel</a>
+                                <a href="#" class="btn btn-success btn-sm" id="save"><i class="fa fa-check-circle"></i>&nbsp;Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*</div>*@
+            <hr>
+        </div>
+        <div class="row">
+            <div class="modal fade" id="view-clients" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
+                            <h4 class="modal-title">Client</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-inverse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <input id="applicantrecordid" type="hidden" name="applicantrecordid" />
+                                            <div class="form-group">
+                                                <label for="first_name"><b>First Name</b></label>
+                                                <input type="text" id="first_name" name="first_name" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="last_name">Last Name</label>
+                                                <input id="last_name" type="text" name="last_name" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="phone_number">Phone Number</label>
+                                                <input type="text" id="phone_number" name="phone_number" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="email"> Email</label>
+                                                <input id="email" type="text" name="email" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="id_number">ID NO / Passport NO</label>
+                                                <input id="id_number" type="text" name="id_number" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="sex">SEX</label>
+                                                <select id="sex" name="sex" class="form-control" readonly>
+                                                    <option value=>Choose Sex</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="occupation">Occupation</label>
+                                                <input id="occupation" type="text" name="occupation" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="nationality">Nationality</label>
+                                                <input id="nationality" type="text" name="nationality" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="physical_address">Physical Address</label>
+                                                <input id="physical_address" type="text" name="physical_address" class="form-control" readonly />
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="next_of_kin_name">Next Of Kin Name</label>
+                                                    <input id="next_of_kin_name" type="text" name="next_of_kin_name" class="form-control" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="next_of_kin_phone_number">Next Of Kin Number</label>
+                                                    <input id="next_of_kin_phone_number" type="text" name="next_of_kin_phone_number" class="form-control" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="date_of_birth">Date Of Birth</label>
+                                                    <input id="date_of_birth" type="text" name="date_of_birth" class="form-control" readonly />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <label class="form-control-label" for="remarks">Remarks</label>
+                                                <textarea id="remarks" rows="3" name="remarks" placeholder="Enter Remarks" class="form-control" readonly></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-white btn-sm" id="cancel" data-dismiss="modal"><i class="fa fa-times-circle"></i>&nbsp;Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*</div>*@
+            <hr>
+        </div>
+        <!-- end panel-body -->
+    </div>
+
+    <!-- end panel -->
+    @section PageScripts {
+        <script src="~/assets/static/plugins/select2/dist/js/select2.min.js"></script>
+        <script src="~/assets/static/plugins/dataTables/media/js/jquery.dataTables.js"></script>
+        <script src="~/assets/static/plugins/dataTables/media/js/dataTables.bootstrap.min.js"></script>
+        <script src="~/assets/static/plugins/dataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <script src="~/assets/static/js/table-manage-responsive.demo.min.js"></script>
+        <script src="~/assets/static/plugins/bootstrap-sweetalert2/sweetalert2.all.min.js"></script>
+        <script src="~/assets/static/js/apps.min.js"></script>
+        <script src="~/assets/static/js/jquery.blockUI.js"></script>
+        <script src="~/assets/static/js/client-management/clients.js"></script>
+
+    }
